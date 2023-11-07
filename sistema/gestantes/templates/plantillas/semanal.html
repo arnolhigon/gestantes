@@ -1,0 +1,200 @@
+{% extends 'home.html' %}
+{% load static %} 
+{% block title %} * {% endblock title %} 
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/pre_sema.css' %}" />
+<link rel="stylesheet" href="{% static 'css/formulario.css' %}" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"crossorigin="anonymous" />
+<link rel="stylesheet"href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+{% endblock %}
+
+{% block content %}
+<div id="alert-container"></div>
+<div class="content-wrapper">
+    <div class="content">
+        <div class="row justify-content-center  align-items-center vh-100">
+            <!--******************* TARGETA INFO IPS*********************************************** -->
+            <div class="col-md-6 col-lg-4 col-xl-3"  >
+                <div class="card card-info pres_sema_card"
+                    style="height: 600px;">
+                    <!-- ROW1 -->
+                    <div class="fila1">
+                        <!-- ICONO VOLVER -->
+                        <div class="back">
+                            <a href="javascript:void(0);"
+                                onclick="history.back();">
+                                <i class="fas fa-chevron-left back_bottom"></i>
+                            </a>
+                        </div>
+                        <div class="fila_main">
+                            <!-- ICONO HOSPITAL -->
+                            <div class="icon_ips">
+                                <i class="far fa-hospital"></i>
+                            </div>
+                            <div class="main_info">
+                                <div class="title">
+                                    <div class="title-text">
+                                        <a class="report_text">Reporte<a
+                                                class="sema_text">SEMANAL</a></a>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <b class="name_ips">Hospital Universitario
+                                        San Jose</b>
+                                    <p class="nit_ips">
+                                        <b>CÓDIGO IPS:</b>
+                                        <a>999999999</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ROW2 -->
+                    <div class="fila2">
+                        <div class="icons">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="far fa-calendar"></i>
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <div class="ips-info">
+                            <p>Municipio: Popayán</p>
+                            <p>Corte: 05-07-2023</p>
+                            <p>Próximo cargue: 19-07-2023</p>
+                        </div>
+                    </div>
+                    <!-- ROW3 -->
+                    <div class="fila3">
+                        <b>15.777</b>
+                        <a>Número de gestantes reportadas</a>
+                    </div>
+                </div>
+            </div>
+            <!--******************* TARGETA TABLA DE INFORMACIÓN************************************* -->
+            <div class="col-md-6 col-lg-7 col-xl-7 car2">
+                <div class="card card-info pres_sema_table"
+                    style="height: 600px;">
+                    <div class="header_table">
+                        <div
+                            class="card-header d-flex justify-content-between align-items-center">
+                            <h2 class="text-success">Cargues</h2>
+                            <div class="circle-container">
+                                <span class="circle-text"><a><strong>Nuevo
+                                            Cargue</strong></a></span>
+                                <div class="circle-icon">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_body">
+                        <div class="table_conteiner">
+                            <table id="miTabla" style="width: 100%;">
+                                <thead>
+                                    <tr class="table_row_1">
+                                        <td><strong>Primer Nombre</strong></td>
+                                        <td><strong>Primer Apellido</strong></td>
+                                        <td><strong>N° Identificacion</strong></td>
+                                        <td><strong>Fecha de Carge</strong></td>
+                                        <td colspan="4"style="text-align: left; "><strong>Soportes</strong></td>
+                                        <td colspan="3" style="text-align: left"><strong>Acciones</strong></td>
+                                    </tr>
+                                    <tr class="table_row_2" style="height: 50px">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong>IC</strong></td>
+                                        <td><strong>VIH</strong></td>
+                                        <td><strong>SF</strong></td>
+                                        <td><strong>HC</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                       {% comment %} <i class="fas fa-file-pdf" style="color: gray;"></i> {% endcomment %}
+                                <tbody>
+                                    {% for registro in data_list %}
+                                    <tr>
+                                        <td>{{ registro.id }}</td>
+                                        <td>{{ registro.tipdoc }}</td>
+                                        <td>{{ registro.nro_doc }}</td>
+                                        <td>{{ registro.created|date:"d-m-Y" }}</td>
+
+                                        <td class="IC">
+                                            {% for soporte in registro.soportes %}
+                                                {% if soporte.tipo_arch == "IC" %}
+                                                    <a href="{{ soporte.soporte.url }}"><i class="far fa-file-pdf"></i></a>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td class="VIH">
+                                            {% for soporte in registro.soportes %}
+                                                {% if soporte.tipo_arch == "VH" %}
+                                                    <a href="{{ soporte.soporte.url }}"><i class="far fa-file-pdf"></i></a>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td class="SF">
+                                            {% for soporte in registro.soportes %}
+                                                {% if soporte.tipo_arch == "SF" %}
+                                                    <a href="{{ soporte.soporte.url }}"><i class="far fa-file-pdf"></i></a>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td class="HC">
+                                            {% for soporte in registro.soportes %}
+                                                {% if soporte.tipo_arch == "HC" %}
+                                                    <a href="{{ soporte.soporte.url }}"><i class="far fa-file-pdf"></i></a>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                   
+                                        <td><i class="fas fa-minus"></i></td>
+                                        <td><i class="fas fa-times"></i></td>
+                                        <td><i class="fas fa-check"></i></td>
+                                   
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ****************** FORMULARIO******************************************************* -->
+            <div class="col-md-6 col-lg-7 col-xl-7 car3" style="display: none;">
+                <div class="card card-info pres_sema_form"
+                    style="height: 600px; border-radius: 20px">
+                    <div
+                        style="background-color:#ffffff; border-radius: 20px 20px 20px 20px; overflow: auto;">
+            
+            </div>
+        </div>
+    </div>
+    <a href="{% url 'generar_excel_semanal' %}" class="btn btn-primary">Generar Informe</a>
+    
+
+    <form action="{% url 'generar_excel_semanal' %}" method="post">
+        {% csrf_token %}
+        <label for="fecha_inicio">Fecha de Inicio:</label>
+        <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+
+        <label for="fecha_fin">Fecha de Fin:</label>
+        <input type="date" id="fecha_fin" name="fecha_fin" required>
+
+        <input type="submit" value="Generar Excel">
+    </form>
+</div>
+
+</div>
+
+{% endblock %}
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="{% static 'js/prestador_semanal.js' %}"></script>
+{% endblock %}

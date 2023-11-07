@@ -1,0 +1,271 @@
+
+.search-input{
+  background-color:red;
+}
+  .form_row{
+    border-top: 1px solid #ddd !important;
+  }
+
+
+  .f1 {
+    padding: 5%;
+    height:600px !important;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    font-size:0.8em;
+    width:95%;
+  
+
+  }
+
+  .f1-steps {
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative; 
+  }
+
+  .f1-progress {
+    position: absolute;
+    top: 4.5em;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background:rgba(0, 0, 0, 0.1) !important;
+  }
+  
+
+  .f1-progress-line {
+    position: absolute;
+    height: 3px !important;
+    background: #3D9970;
+    border-radius: 5px; 
+  }
+
+  .f1-step {
+    position: relative;
+    float: left;
+    width: 25%;
+    padding: 0px 0px;
+    transition: transform 0.3s;
+  }
+  
+  .f1-step-icon:hover {
+    transform: scale(1.05); 
+  }
+  
+  .f1-step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #606060; 
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .f1-step.active .f1-step-icon {
+    color: #3D9970; 
+  }
+
+  .f1 fieldset {
+    display: none;
+    text-align: left;
+  } 
+  
+  .f1-buttons {
+    text-align: right;
+    margin-bottom:5%;
+  }
+  
+
+  .f1 .input-error {
+    border-color: #DC3545;
+  }
+  
+  button.btn {
+    width: 150px;
+    height: 40px;
+    margin: 0;
+    padding: 0 25px;
+    vertical-align: middle;
+    border: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 40px;
+    color: #fff;
+    border-radius: 4px;
+    text-shadow: none;
+    box-shadow: none;
+    transition: all 0.3s;
+  }
+
+  button.btn.btn-next{
+    background: #3d9970;
+    white-space:nowrap;
+    width:max-content;
+
+  }
+  button.btn.btn-next:hover{
+    background: #7EC6B2 !important;
+    color:white !important;
+  }
+
+  .fa-forward{
+    margin-left: 5px;
+  }
+  .fa-walking{
+    margin-right: 5px;
+  }
+  .fa-backward{
+    margin-right: 5px;
+  }
+  .fa-save{
+    margin-right: 5px;
+  }
+  button.btn.btn-close{
+    background: #606060;
+    text-decoration: none !important;
+    color:white;
+    white-space:nowrap;
+    width:max-content;
+  }
+  button.btn.btn-close:hover{
+    background: white;
+    color: #606060;
+    border:1px solid #606060;
+  }
+ 
+  button.btn.btn-submit,
+  button.btn.btn-submit:focus,
+  button.btn.btn-submit:active:focus,
+  button.btn.btn-submit.active:focus {
+    background: #c6f33f;
+  }
+  
+
+  button.btn.btn-previous{
+    background-color:#fff;
+    border: 2px solid #3d9970;
+    color:#3d9970!important;
+  }
+  button.btn.btn-save{
+    background-color:#3d9970;
+    color:white !important;
+  }
+  button.btn.btn-save:hover{
+    background-color:#7EC6B2 ;
+    color:#fff!important;
+  }
+  button.btn.btn-previous:hover{
+    background-color:#7EC6B2 ;
+    border: none;
+    color:#fff!important;
+  }
+
+
+
+
+button, input, label, select {
+    width: 100%; 
+    box-sizing: border-box;
+    }
+
+.form-group label{
+  font-weight: 500 !important;
+  height:36px;
+
+  margin-bottom: 0px;
+  font-size: 12px; 
+  line-height: 14px; 
+  display: flex;
+  align-items: flex-end;
+}
+.form-group input:focus{
+  border:1px #3d9970 !important;
+}
+input{
+  border-radius:10px;
+}
+input::placeholder{
+  color:rgba(0, 0, 0, 0.3);
+  text-indent: 3%;
+}
+  input[type="text"],
+  input[type="password"],
+  input[type="file"],
+  input[type="date"],
+  input[type="number"],
+  textarea,
+  textarea.form-control {
+  color: #606060 !important;
+  height: 28px;
+  text-indent: 3%;
+  margin-top: 4px;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  display: flex;
+  align-items: flex-start;
+  }
+  .form-group label::after {
+    content: "*";
+    color: red;
+  }
+
+.fieldset {
+  margin-top: 0;
+}
+
+.fieldset label {
+  margin-bottom: 5px; 
+}
+
+.fieldset input {
+  margin-top: 0; 
+}
+.title_form{
+  margin-top:15px;
+  font-size:14px;
+  color: #606060;
+}
+
+/*****************TAMAÑO DE PANTALLAS PEQUEÑO*******************************/
+
+@media (max-width: 480px) {
+
+  .f1 {
+    padding: 5%;
+    height:800px !important;
+    font-size:0.3em;
+    letter-spacing: -1px;
+  }
+  .f1-step-icon {
+    font-size: 12px;
+    text-align: center;
+  }
+  .f1-step-icon i {
+    display: block;
+  }
+  
+  .f1-progress {
+    top: 8em;
+  }
+  
+
+
+  button.btn {
+    font-size: 12px; 
+  }
+  .button.btn{
+    width:80px;
+    padding: 0 18px;
+  }
+  button.btn.btn-previous{
+    width:100px;
+  }
+}

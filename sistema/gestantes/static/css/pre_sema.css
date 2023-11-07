@@ -1,0 +1,438 @@
+/*  ****************************************TARGETA PRESENTACIÓN INFO IPS*****************************************************  */
+.pres_sema_card {
+  padding: 5%;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30% 25% 40%;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 14px !important;
+}
+
+.pres_sema_card:hover {
+  transform: scale(1.05);
+}
+
+.fila1 {
+  display: grid;
+  grid-template-rows: 15% 85%;
+  border-bottom: 2px solid #3D9970;
+
+}
+
+.back {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.back_bottom {
+  font-size: 1.8em;
+  color: #3D9970;
+}
+
+.back_bottom:hover {
+  transform: scale(1.5);
+/*   / Agrandar en un 10% al pasar el cursor por encima / */
+  color: #27AE60;
+/*   / Cambiar a un color más claro al pasar el cursor por encima / */
+}
+
+.fila_main {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.icon_ips {
+  color: #979797;
+  text-align: center;
+  font-size: 4.5em;
+/*   / Ajusta el tamaño del ícono / */
+  white-space: nowrap;
+}
+
+.icon_ips p {
+  max-width: 90%;
+}
+
+.main_info {
+  display: grid;
+  grid-template-rows: 25% 75%;
+}
+
+.report_text {
+  color: #000000;
+  font-size: 1.1em;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.report_text:hover {
+  color: #979797;
+  transition: color 0.3s ease;
+ /*  / Animación de transición / */
+}
+
+.title-text .sema_text {
+  font-weight: 600;
+  color: #3D9970;
+  margin-left: 5px;
+  text-decoration: none;
+}
+
+.name_ips {
+  color: #606060;
+  font-size: 1em;
+}
+
+.nit_ips {
+  font-size: 0.8em;
+  color: #606060;
+}
+
+.fila2 {
+  margin-top: 10%;
+  display: grid;
+  grid-template-columns: 5% 95%;
+  align-items: center;
+ /*  / Alinea verticalmente los elementos / */
+}
+
+.icons {
+  height: 100%;
+  color: #3D9970;
+  font-size: 1.1em;
+  line-height: 1.75em;
+}
+
+.ips-info {
+  margin-top: 3%;
+  height: 97%;
+  width: 97%;
+  font-size: 1em !important;
+  line-height: 0.9em;
+  margin-left: 3%;
+}
+
+.ips-info p {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.fila3 {
+  margin-top: 10%;
+  display: grid;
+  grid-template-rows: 60% 40%;
+  justify-content: center;
+}
+
+.fila3 b {
+  white-space: pre-line;
+  font-size: 5em;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: #3D9970;
+}
+
+.fila3 a {
+  color: #606060;
+  font-size: 1em;
+}
+
+.icon_ips:hover {
+  color: #d4d4d4;
+/*   / Cambiar color al pasar el cursor por encima / */
+  transition: color 0.3s ease;
+/*   / Animación de transición / */
+}
+
+.fila3 b:hover {
+  color: #7EC6B2;
+/*   / Cambiar color al pasar el cursor por encima / */
+  transition: color 0.3s ease;
+/*   / Animación de transición / */
+}
+
+
+/* 
+/******************************TARGETA TABLA DE REPORTES ****************************************************** / */
+/* / HEADER / */
+.pres_sema_table {
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 18px !important;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.pres_sema_table:hover {
+  transform: scale(1.03);
+}
+
+.header_table {
+  background-color: #F5F7F6;
+  border-radius: 18px 18px 20px 20px;
+/*   / Aplica el border radius solo en las esquinas de abajo / */
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 {
+  margin-left: 4%;
+  font-size: 1.5em !important;
+  color: #3D9970 !important;
+  font-weight: bold !important;
+}
+
+.circle-container {
+  margin-right: 4%;
+  display: flex;
+/*   / Cambia el contenedor a flexbox / */
+  align-items: center;
+/*   / Alinea verticalmente los elementos en el centro / */
+  margin-left: auto !important;
+  transition: transform 0.2s, margin-left 0.2s;
+}
+
+.circle-container:hover {
+  transform: translateX(8px);
+ /*  / Mueve hacia el lado derecho al hacer hover / */
+}
+
+.circle-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #3D9970;
+  border-radius: 50%;
+  display: flex;
+/*   / Cambia el icono a flexbox / */
+  align-items: center;
+/*   / Alinea verticalmente el contenido del icono en el centro / */
+  justify-content: center;
+/*   / Centra horizontalmente el contenido del icono / */
+  font-size: 18px;
+  color: white !important;
+  transition: transform 0.2s, margin-left 0.2s;
+}
+
+.circle-text a {
+  margin-right: 10px;
+  font-size: 1em;
+  color: #3D9970 !important;
+  text-decoration: none;
+
+}
+
+.circle-text a:hover {
+  color: #7EC6B2;
+}
+
+/* / BODY / */
+.card_body {
+  width: 90%;
+  height: 100%;
+  margin-left: 5%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.table_row_1 td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+/*   / Cambia el color y el grosor según tus preferencias / */
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  background-color: rgba(0, 0, 0, 0.03);
+  font-size: 18px;
+  padding-left: 10px;
+/*   / Ajusta el espacio para el ícono / */
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+  outline: 5px solid #A5D6C9;
+}
+
+
+/* / Mover la barra de búsqueda a la izquierda / */
+.dataTables_wrapper .dataTables_filter {
+  text-align: left !important;
+  color: white;
+  margin-top: 2%;
+}
+
+.fa-file-pdf {
+  font-size: 1.3em;
+  color: #DC3545;
+}
+
+#miTabla {
+  margin-top: 5%;
+  font-size: 0.9em;
+}
+
+#miTabla tr.table_row_1 td {
+  color: black !important;
+  font-weight: 400 !important;
+}
+
+#miTabla tr.table_row_2 td {
+  color: black !important;
+  font-weight: 400 !important;
+}
+
+#miTabla td:nth-child(3) {
+  color: #339973;
+  font-weight: bold !important;
+}
+
+#miTabla td:nth-child(1),
+#miTabla td:nth-child(2),
+#miTabla td:nth-child(4),
+#miTabla td:nth-child(5),
+#miTabla td:nth-child(6),
+#miTabla td:nth-child(7),
+#miTabla td:nth-child(8),
+#miTabla td:nth-child(9) {
+  color: #606060 !important;
+  font-weight: 400 !important;
+}
+
+#miTabla_length {
+  display: none !important;
+/*   / desactiva show entries selecciona cantidad de datos a mostrar por paginado / */
+}
+
+#miTabla thead th {
+  height: 50px !important;
+/*   / Ajusta esta altura según tus necesidades / */
+}
+
+/* / Estilo para el botón activo en la paginación / */
+.paginate_button.active a {
+  background-color: #339973 !important;
+  color: white !important;
+  border-color: #339973 !important;
+
+}
+/* 
+/ Estilo para los otros números de la paginación / */
+.paginate_button:not(.active) a {
+  color: #339973 !important;
+}
+
+/**************************TAMAÑO DE PANTALLA PEQUEÑO *************************************/
+@media (max-width: 400px) {
+  .car2 {
+    display: flex; /* / Vuelve a utilizar flex en pantallas medianas y grandes / */
+}
+.pres_sema_card {
+  max-height:500px;
+}
+  .card-header h2{
+    font-size:1.1em;
+  }
+  .circle-text a{
+    font-size:1em;
+    justify-content: center;
+  }
+  .circle-icon{
+    width: 30px;
+    height: 30px;
+  }
+  .dataTables_wrapper .dataTables_filter input {
+    padding-left:5px;
+    font-size: 15px;
+    margin-top: 3%;
+  }
+
+  .fa-file-pdf {
+    font-size: 2em;
+  }
+  #miTabla {
+    font-size: 0.8rem;
+/*     / Puedes ajustar este valor según tus preferencias CELULAR / */
+  }
+  .my-custom-alert {
+    top: 35px;
+    margin-right: 0px;
+    padding: 5px;
+    font-size: 14px;
+    max-height: 30px;
+    width: 150px;
+  }
+  
+}
+
+#miTabla td {
+  padding: 8px;
+}
+
+#miTabla_wrapper .dataTables_paginate {
+  margin-top: 30px;
+/*   / Puedes ajustar este valor según tus preferencias / */
+}
+/* 
+/ ALERTAS DE NOTIFICACIONES / */
+
+.my-custom-alert {
+  position: fixed;
+  top: 90px;
+  right: 0px;
+/*   / Ajusta la distancia desde el borde derecho / */
+  margin-right: 0px;
+  padding: 12px;
+  border-radius: 5px 0 0 5px;
+  font-size: 18px;
+  z-index: 10001;
+  max-height: 50px;
+  width: 300px;
+  text-align: center;
+  color: white;
+  animation: slideIn 0.5s ease, fadeOut 0.5s ease 3.5s forwards;
+}
+
+.my-custom-alert.alert-success {
+  background-color: #54B66C;
+}
+
+.my-custom-alert.alert-info {
+  background-color: #57A0BC;
+}
+
+.my-custom-alert.alert-warning {
+  background-color: #F5911E;
+}
+
+.my-custom-alert.alert-error {
+  background-color: #DC3545;
+}
+
+.my-custom-alert.alert-secundary {
+  background-color: #979797;
+}
+
+/* 
+
+******************************* ANIMACIONES *********************************** */
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}

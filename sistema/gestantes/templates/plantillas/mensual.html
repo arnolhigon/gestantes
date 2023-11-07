@@ -1,0 +1,186 @@
+{% extends 'home.html' %}
+{% load static %} 
+{% block title %} * {% endblock title %} 
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/pre_sema.css' %}" />
+<link rel="stylesheet" href="{% static 'css/formulario.css' %}" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"crossorigin="anonymous" />
+<link rel="stylesheet"href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+{% endblock %}
+
+{% block content %}
+<div id="alert-container"></div>
+<div class="content-wrapper">
+    <div class="content">
+        <div class="row justify-content-center  align-items-center vh-100">
+            <!--******************* TARGETA INFO IPS*********************************************** -->
+            <div class="col-md-6 col-lg-4 col-xl-3"  >
+                <div class="card card-info pres_sema_card"
+                    style="height: 600px;">
+                    <!-- ROW1 -->
+                    <div class="fila1">
+                        <!-- ICONO VOLVER -->
+                        <div class="back">
+                            <a href="javascript:void(0);"
+                                onclick="history.back();">
+                                <i class="fas fa-chevron-left back_bottom"></i>
+                            </a>
+                        </div>
+                        <div class="fila_main">
+                            <!-- ICONO HOSPITAL -->
+                            <div class="icon_ips">
+                                <i class="far fa-hospital"></i>
+                            </div>
+                            <div class="main_info">
+                                <div class="title">
+                                    <div class="title-text">
+                                        <a class="report_text">Reporte<a
+                                                class="sema_text">Mensual</a></a>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <b class="name_ips">Hospital Universitario
+                                        San Jose</b>
+                                    <p class="nit_ips">
+                                        <b>CÓDIGO IPS:</b>
+                                        <a>999999999</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ROW2 -->
+                    <div class="fila2">
+                        <div class="icons">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="far fa-calendar"></i>
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <div class="ips-info">
+                            <p>Municipio: Popayán</p>
+                            <p>Corte: 05-07-2023</p>
+                            <p>Próximo cargue: 19-07-2023</p>
+                        </div>
+                    </div>
+                    <!-- ROW3 -->
+                    <div class="fila3">
+                        <b>15.777</b>
+                        <a>Número de gestantes reportadas</a>
+                    </div>
+                </div>
+            </div>
+            <!--******************* TARGETA TABLA DE INFORMACIÓN************************************* -->
+            <div class="col-md-6 col-lg-7 col-xl-7 car2">
+                <div class="card card-info pres_sema_table"
+                    style="height: 600px;">
+                    <div class="header_table">
+                        <div
+                            class="card-header d-flex justify-content-between align-items-center">
+                            <h2 class="text-success">Cargues</h2>
+                            <div id="cargarReporte" class="circle-container">
+                                <span class="circle-text"><a ><strong>Cargar nuevo reporte</strong></a></span>
+                                 <div class="circle-icon">
+                                     <i class="fa fa-upload" aria-hidden="true"></i>
+                                   </a>
+                                 </div>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="card_body">
+                        <div class="table_conteiner">
+                            <table id="miTabla" style="width: 100%;">
+                                <thead>
+                                    <tr class="table_row_1">
+                                        <td><strong>Nit</strong></td>
+                                        <td><strong>Prestador</strong></td>
+                                        <td><strong>Mes de Cargue</strong></td>
+                                        <td><strong>Fecha de Cargue</strong></td>
+                                        <td><strong>Acciones</strong></td>
+                                    </tr>
+                                    <tr class="table_row_2" style="height: 50px">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for archivo in archivos_excel %}
+                                    <tr>
+                                        <td>{{archivo.id}}</td>
+                                        <td>Minga</td>
+                                        <td>{{ archivo.created|date:"F.Y" }}</td>
+                                        <td>{{ archivo.created}}</td>
+                                        <td style="text-align: center;">
+                                            <a href="{{ archivo.soporte_excel.url }}" id="showCard3"><i class="fas fa-download" aria-hidden="true" style="color: gray;" download></i></a>
+                                            <a title="Borrar registro"  href="{% url 'elimina_mensual' archivo.id %}"><i class="fas fa-trash" aria-hidden="true" style="color: red;"></i></a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>   
+                            </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div id="confirm-section" class="confirm-section" style="display: none;">
+                {% block ventana-confirmacion %}
+                {% include 'plantillas/ventana_cargue.html' %}
+                {% endblock %}
+            </div>
+            <!-- ****************** FORMULARIO******************************************************* -->
+            <div class="col-md-6 col-lg-7 col-xl-7 car3" style="display: none;">
+                <div class="card card-info pres_sema_form"
+                    style="height: 600px; border-radius: 20px">
+                    <div
+                        style="background-color:#ffffff; border-radius: 20px 20px 20px 20px; overflow: auto;">
+            </div>
+        </div>
+    </div>
+    <a href="{% url 'generar_excel_mensual' %}" class="btn btn-primary">Generar Informe</a>
+
+    <form action="{% url 'generar_excel_mensual' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="fecha_inicio">Fecha de Inicio:</label>
+        <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+
+        <label for="fecha_fin">Fecha de Fin:</label>
+        <input type="date" id="fecha_fin" name="fecha_fin" required>
+
+        <input type="submit" value="Generar Excel">
+    </form>
+</div>
+
+{% endblock %}
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="{% static 'js/prestador_mensual.js' %}"></script>
+
+<script>
+    $(document).ready(function () {
+      configurarPagina("Reporte Mensual", "Cargues", "Nuevo Cargue");
+    });
+</script>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const cargarReporteButton = document.getElementById("cargarReporte");
+        const ventanaCargue = document.getElementById("ventana-cargue");
+
+        $(".circle-container").click(function (e) {
+            $('#confirm-section').fadeIn();
+          });
+        
+        if (ventanaCargue.style.display === "none" || ventanaCargue.style.display === "") {
+            ventanaCargue.style.display = "block"; // Muestra la ventana de carga si está oculta
+        } else {
+            ventanaCargue.style.display = "none"; // Oculta la ventana de carga si está visible
+        }
+    });
+</script>
+{% endblock %}

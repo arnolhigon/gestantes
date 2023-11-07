@@ -1,0 +1,29 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Registros Individuales</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tipo de Documento</th>
+                <th>Número de Documento</th>
+                <th>Fecha de Parto</th>
+                <th>Soporte</th>
+                <!-- Otros campos que desees mostrar -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros_completos %}
+            <tr>
+                <td>{{ registro.datosgestante.tipdoc }}</td>
+                <td>{{ registro.datosgestante.nro_doc }}</td>
+                <td>{{ registro.datosgestante.fecha_parto }}</td>
+                <td><a href="{{ registro.soporte.url }}" target="_blank">{{ registro.soporte.name }}</a></td>
+                <!-- Otros campos de registro que desees mostrar -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+
+{% load static from static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/ventana_cargue.css' %}" />
+{% endblock %}
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="confirm-content" >
+        <div class="cargue-window">
+            <div class="title-cargue">
+                <div class="title-cargue">
+                    <div class="left-content">
+                        <b>CARGAR SOPORTES</b>
+                    </div>
+                    <div class="right-content">
+                        <button type="button" id="close-button" class="btn-close"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="body-cargue">
+                <div class="label_input">
+                    <a>Selecciona el archivo pertinente a cargar.</a>
+                </div>
+                <div class="input_file">
+                    <input type="file" id="{{ form.soporte_excel.id_for_label }}" name="{{ form.soporte_excel.name }}" accept=".csv, .xls, .xlsx" />
+                </div>
+                <div class="options-confirm">
+                    <button class="save_btn" type="submit" ><i class="fa fa-upload" aria-hidden="true"></i>CARGAR</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</form>
+{% endblock %}
+{% block js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const closeButton = document.getElementById('close-button');
+        closeButton.addEventListener('click', function () {
+            const confirmContent = document.getElementById('confirm-content');
+            confirmContent.style.display = 'none';
+            location.reload();
+        });
+    });
+</script>
+{% endblock %}

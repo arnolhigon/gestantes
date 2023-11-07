@@ -1,0 +1,161 @@
+{% extends 'home.html' %}
+{% load static %} 
+{% block title %} * {% endblock title %} 
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/pre_sema.css' %}" />
+<link rel="stylesheet" href="{% static 'css/formulario.css' %}" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"crossorigin="anonymous" />
+<link rel="stylesheet"href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+{% endblock %}
+
+{% block content %}
+<div id="alert-container"></div>
+<div class="content-wrapper">
+    <div class="content">
+        <div class="row justify-content-center  align-items-center vh-100">
+            <!--******************* TARGETA INFO IPS*********************************************** -->
+            <div class="col-md-6 col-lg-4 col-xl-3"  >
+                <div class="card card-info pres_sema_card"
+                    style="height: 600px;">
+                    <!-- ROW1 -->
+                    <div class="fila1">
+                        <!-- ICONO VOLVER -->
+                        <div class="back">
+                            <a href="javascript:void(0);"
+                                onclick="history.back();">
+                                <i class="fas fa-chevron-left back_bottom"></i>
+                            </a>
+                        </div>
+                        <div class="fila_main">
+                            <!-- ICONO HOSPITAL -->
+                            <div class="icon_ips">
+                                <i class="far fa-hospital"></i>
+                            </div>
+                            <div class="main_info">
+                                <div class="title">
+                                    <div class="title-text">
+                                        <a class="report_text">Reporte<a
+                                                class="sema_text">SEMANAL</a></a>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <b class="name_ips">Hospital Universitario
+                                        San Jose</b>
+                                    <p class="nit_ips">
+                                        <b>CÓDIGO IPS:</b>
+                                        <a>999999999</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ROW2 -->
+                    <div class="fila2">
+                        <div class="icons">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="far fa-calendar"></i>
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <div class="ips-info">
+                            <p>Municipio: Popayán</p>
+                            <p>Corte: 05-07-2023</p>
+                            <p>Próximo cargue: 19-07-2023</p>
+                        </div>
+                    </div>
+                    <!-- ROW3 -->
+                    <div class="fila3">
+                        <b>15.777</b>
+                        <a>Número de gestantes reportadas</a>
+                    </div>
+                </div>
+            </div>
+            <!--******************* TARGETA TABLA DE INFORMACIÓN************************************* -->
+            <div class="col-md-6 col-lg-7 col-xl-7 car2">
+                <div class="card card-info pres_sema_table"
+                    style="height: 600px;">
+                    <div class="header_table">
+                        <div
+                            class="card-header d-flex justify-content-between align-items-center">
+                            <h2 class="text-success">Cargues</h2>
+                            <div class="circle-container">
+                                <span class="circle-text"><a><strong>Nuevo
+                                            Cargue</strong></a></span>
+                                <div class="circle-icon">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_body">
+                        <div class="table_conteiner">
+                            <table id="miTabla" style="width: 100%;">
+                                <thead>
+                                    <tr class="table_row_1">
+                                        <th><strong>Primer Nombre</strong></th>
+                                        <th><strong>Primer Apellido</strong></th>
+                                        <th><strong>N° Identificación</strong></th>
+                                        <th><strong>Fecha de Carga</strong></th>
+                                        <th colspan="4"><strong>Soportes</strong></th>
+                                        <th colspan="3"><strong>Acciones</strong></th>
+                                    </tr>
+                                    <tr class="table_row_2" style="height: 50px">
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th class="soporte"><strong>IC</strong></th>
+                                        <th class="soporte"><strong>VIH</strong></th>
+                                        <th class="soporte"><strong>SF</strong></th>
+                                        <th class="soporte"><strong>HC</strong></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for numero in num_distintos%}
+                                    <tr>
+                                        <td></td>
+                                        <td>{{numero.tipdoc}}</td>
+                                        <td>
+                                            <a href="{% url 'mostrar' numero.tipdoc numero.nro_doc %}" target="_blank" style="text-decoration: none;" >{{ numero.nro_doc }}</a>
+                                        </td>
+                                        <td>{{ numero.fecha_parto|date:"d-m-Y" }}</td>
+                                        <td class="IC"></td>
+                                        <td class="VIH"></td>
+                                        <td class="SF"></td>
+                                        <td class="HC"></td>
+
+                                        <td><i class="fas fa-minus"></i></td>
+                                        <td><i class="fas fa-times"></i></td>
+                                        <td><i class="fas fa-check"></i></td>
+                                    </tr>
+                                     {% endfor %}
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ****************** FORMULARIO******************************************************* -->
+            <div class="col-md-6 col-lg-7 col-xl-7 car3" style="display: none;">
+                <div class="card card-info pres_sema_form"
+                    style="height: 600px; border-radius: 20px">
+                    <div
+                        style="background-color:#ffffff; border-radius: 20px 20px 20px 20px; overflow: auto;">
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="{% static 'js/prestador_semanal.js' %}"></script>
+{% endblock %}

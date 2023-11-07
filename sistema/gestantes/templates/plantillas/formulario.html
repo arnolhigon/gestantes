@@ -1,0 +1,239 @@
+{% load static from static %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css"/>
+<link rel="stylesheet" href="{% static 'css/formulario.css' %}" />
+<style>
+  .f1-step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .f1-step-icon i {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<div id="form-container">
+  <form method="post" enctype="multipart/form-data" class="f1">
+    {% csrf_token %}
+    <div class="f1-steps">
+      <div class="f1-progress">
+        <div class="f1-progress-line" data-now-value="25" data-number-of-steps="4" style="width: 25%"></div>
+      </div>
+      <div class="f1-step active">
+        <div class="f1-step-icon active">
+          <p><i class="fas fa-user"></i>Datos<br>Generales</p>
+        </div>
+      </div>
+
+      <div class="f1-step">
+        <div class="f1-step-icon">
+          <p><i class="fas fa-list-ul"></i><br>Actividades</p>
+        </div>
+      </div> 
+      <div class="f1-step">
+        <div class="f1-step-icon"><p><i class="fas fa-user-edit"></i><br>Seguimiento</p></div>
+      </div>
+      <div class="f1-step">
+        <div class="f1-step-icon"><p><i class="fas fa-file"></i><br>Soportes</p></div>
+      </div>
+      
+    </div>
+
+   <fieldset data-step="1">
+      <h1>Datos Generales</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+              {{ form_datos_gestante.tipo_archivo.label_tag }} {{ form_datos_gestante.tipo_archivo }}
+              <label for="regional">Regional:</label>
+              <input type="text" id="regional" name="regional" value="{{ instance.regional }}">
+              
+              <label for="prestador">Prestador:</label>
+              <input type="text" id="prestador" name="prestador" value="{{ instance.prestador }}">
+              
+              {{ form_datos_gestante.tipdoc.label_tag }} {{ form_datos_gestante.tipdoc }}
+              {{ form_datos_gestante.nro_doc.label_tag }} {{ form_datos_gestante.nro_doc }}
+              {{ form_datos_gestante.fecha_parto.label_tag }} {{ form_datos_gestante.fecha_parto }}
+              {{ form_datos_gestante.usuario.label_tag }} {{ form_datos_gestante.usuario }}
+
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+
+       
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="f1-buttons">
+        <button type="button" class="btn btn-next">Siguiente</button>
+      </div>
+    </fieldset>
+
+   <fieldset data-step="2"> 
+      <h1>Actividades</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+        
+              {{ form_actividades.fecha_parto.label_tag }} {{ form_actividades.fecha_parto }}
+              {{ form_actividades.cod_cups.label_tag }} {{ form_actividades.cod_cups }}
+              {{ form_actividades.finalidad.label_tag }} {{ form_actividades.finalidad }}
+              {{ form_actividades.clas_ries_ges.label_tag }} {{ form_actividades.clas_ries_ges }}
+              {{ form_actividades.clas_ries_precl.label_tag }} {{ form_actividades.clas_ries_precl }}
+              {{ form_actividades.suministro_asa.label_tag }} {{ form_actividades.suministro_asa }}
+              {{ form_actividades.suministro_acido.label_tag }} {{ form_actividades.suministro_acido }}
+              {{ form_actividades.suministro_sulfato.label_tag }} {{ form_actividades.suministro_sulfato }}
+              {{ form_actividades.suministro_calcio.label_tag }} {{ form_actividades.suministro_calcio }}
+              {{ form_actividades.fecha_suministro.label_tag }} {{ form_actividades.fecha_suministro }}
+              {{ form_actividades.suministro_antic.label_tag }} {{ form_actividades.suministro_antic }}
+              {{ form_actividades.fecha_salida.label_tag }} {{ form_actividades.fecha_salida }}
+          
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="f1-buttons">
+        <button type="button" class="btn btn-previous">Atras</button>
+        <button type="button" class="btn btn-next">Siguiente</button>
+      </div>
+  </fieldset>
+
+
+ <fieldset data-step="3">
+      <h1>Seguimiento</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            {{ form_seguimiento.tipo_archivo.label_tag }} {{ form_seguimiento.tipo_archivo }}
+            {{ form_seguimiento.tipo_caso.label_tag }} {{ form_seguimiento.tipo_caso }}
+            {{ form_seguimiento.fecha_seguimiento.label_tag }} {{ form_seguimiento.fecha_seguimiento }}
+            {{ form_seguimiento.tipo_seguimiento.label_tag }} {{ form_seguimiento.tipo_seguimiento }}
+            {{ form_seguimiento.asig_cita_pm.label_tag }} {{ form_seguimiento.asig_cita_pm }}
+            {{ form_seguimiento.asig_cita_me.label_tag }} {{ form_seguimiento.asig_cita_me }}
+            {{ form_seguimiento.referencia_inst.label_tag }} {{ form_seguimiento.referencia_inst }}
+            {{ form_seguimiento.can_entrega_med.label_tag }} {{ form_seguimiento.can_entrega_med }}
+            {{ form_seguimiento.entrega_med.label_tag }} {{ form_seguimiento.entrega_med }}
+            {{ form_seguimiento.info_ciudado_sal.label_tag }} {{ form_seguimiento.info_ciudado_sal }}
+
+          </div>
+          <div class="col-md-4">
+   
+
+          </div>
+          <div class="col-md-4">
+       
+  
+          </div>
+        </div>
+      </div>
+      <div class="f1-buttons">
+        <button type="button" class="btn btn-previous">Atras</button>
+        <button type="button" class="btn btn-next">Siguiente</button>
+      </div>
+</fieldset>  
+
+   <fieldset data-step="4">  
+      <h1>Soportes</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+           {{ form_soportes.errors }}
+           {{ form_soportes.tipo_arch.label_tag }} {{ form_soportes.tipo_arch }}
+
+           <input type="file" id="id_soporte" name="soporte" accept=".pdf"  value="" />
+           <div id="fileNameDisplay"></div>
+   
+           <input type="button" value="Cargar y Validar PDF" id="validatePdfButton" />
+
+          </div>
+          <div class="col-md-4">
+         
+          </div>
+          <div class="col-md-4">
+          
+          </div>
+        </div>
+      </div>
+     <div class="f1-buttons">
+       <button type="button" class="btn btn-previous">Atras</button>
+        <input type="submit" value="Guardar" /> 
+     </div>
+    </fieldset> 
+
+{% comment %}  <div>{% include 'plantillas/tablas_formulario.html' %}</div>  {% endcomment %}
+<div class="f1-buttons">
+  <button type="button" class="btn btn-previous">Atras</button>
+   <input type="submit" value="Guardar" /> 
+</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/formulario.js' %}"></script>
+<script>
+  var fileInput = document.getElementById('id_soporte');
+  var fileNameDisplay = document.getElementById('fileNameDisplay');
+  var validatePdfButton = document.getElementById('validatePdfButton');
+
+  validatePdfButton.addEventListener('click', function (e) {
+      // Evitar que se envíe el formulario
+      e.preventDefault();
+
+      var file = fileInput.files[0];
+
+      if (file) {
+          // Verificar si la extensión del archivo es .pdf
+          if (file.name.toLowerCase().endsWith('.pdf')) {
+              // El archivo es un PDF, mostrar el nombre
+              fileNameDisplay.textContent = 'Nombre del archivo: ' + file.name;
+          } else {
+              // El archivo no es un PDF, mostrar un mensaje de error
+              fileNameDisplay.textContent = 'Error: El archivo debe ser un PDF';
+              // Dejar el campo vacío
+              fileInput.value = '';
+          }
+      } else {
+          // No se seleccionó ningún archivo
+          fileNameDisplay.textContent = 'No se ha seleccionado ningún archivo';
+      }
+  });
+</script>
+<script>
+  $(document).ready(function() {
+    $("#search-button").click(function() {
+      $(".search-bar").hide();  // Oculta la barra de búsqueda
+      $("#form-container").fadeIn();  // Muestra el formulario
+    });
+  });
+</script>
+
+{% endblock %}

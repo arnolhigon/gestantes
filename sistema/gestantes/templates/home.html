@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block titulo %}<title>Home</title>{% endblock titulo %}
+{% block css %} 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+{% endblock %}
+<style>
+  .contrast-effect{
+  filter: contrast(150%)
+  }
+</style>
+
+<body>
+
+
+  <div class="container">
+    {% block content %}
+    <button type="button" class="btn btn-primary" onclick="changeColorScheme()">Cambiar esquema de color</button>
+    <button type="button" class="btn btn-primary" onclick="increaseFontSize()">Aumentar tamaño de fuente</button>
+    <button type="button" class="btn btn-primary" onclick="decreaseFontSize()">Reducir tamaño de fuente</button>
+    <button type="button" class="btn btn-primary" onclick="toggleContrast()">Cambiar Contraste</button>
+    <div class="content-center">
+      <h1>¡Bienvenidos a AIC EPS-I</h1>
+    </div>
+    <h1>  El 13 de septiembre “Día del programador informático” fue propuesto por Valentin Balt, un empleado de la compañía de diseño web Parallel Technologies, quién en 2002 juntó firmas para que se reconociese este día como el oficial de los programadores. </h1>
+    {% endblock content %}
+  </div>
+
+  {% block footer %}
+<!--   <footer class="footer">
+    <p>    Copyright 2023© All rights reserved | by www.aicsalud.org.co | </p>
+  </footer> -->
+  {% endblock footer %}
+  
+  {% block js %}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+</script>
+
+
+<script>
+  function decreaseFontSize() {
+    const elements = document.querySelectorAll("body *"); // Obtén todos los elementos dentro del body
+
+    elements.forEach((element) => {
+      const currentFontSize = window.getComputedStyle(element, null).getPropertyValue('font-size');
+      const fontSizeValue = parseFloat(currentFontSize);
+      const newFontSize = fontSizeValue - 1;
+      element.style.fontSize = newFontSize + "px";
+    });
+  }
+</script>
+
+
+<script>
+  let isGray = false;
+
+  function changeColorScheme() {
+    const body = document.body;
+
+    if (isGray) {
+      body.style.backgroundColor = 'white';
+      isGray = false;
+    } else {
+      body.style.backgroundColor = 'gray';
+      isGray = true;
+    }
+  }
+</script>
+
+<script>
+  let isContrastEnabled = false; // Variable para rastrear el estado del contraste
+
+  function toggleContrast() {
+    const body = document.body;
+
+    if (isContrastEnabled) {
+      body.classList.remove('contrast-effect');
+      isContrastEnabled = false;
+    } else {
+      body.classList.add('contrast-effect');
+      isContrastEnabled = true;
+    }
+  }
+</script>
+
+ {% endblock %}
+ </body>
+</html>
