@@ -142,7 +142,6 @@ def datos(request):
 
 
 
-import pandas as pd
 from django.db import models
 
 
@@ -297,11 +296,6 @@ def generar_excel_semanal(request):
     wb.save(response)
 
     return response
-
-
-
-
-
 
 
 def eliminar_mensual(request, datosgestante_id):
